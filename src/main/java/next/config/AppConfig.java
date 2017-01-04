@@ -8,6 +8,7 @@ import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.FilterType;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
@@ -17,10 +18,11 @@ import org.springframework.stereotype.Controller;
 
 @Configuration
 @ComponentScan(
-	basePackages = { "next.service", "next.dao" },
+	basePackages = { "next.service", "next.dao", "next.aop" },
 	excludeFilters = @ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION)
 )
 @PropertySource("classpath:application.properties")
+@EnableAspectJAutoProxy(proxyTargetClass=true)
 public class AppConfig {
 	@Value("${db.driver.class}")
 	private String driverClass;

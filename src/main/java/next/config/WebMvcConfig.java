@@ -11,12 +11,14 @@ import org.springframework.web.method.support.HandlerMethodArgumentResolver;
 import org.springframework.web.servlet.ViewResolver;
 import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 import org.springframework.web.servlet.view.JstlView;
 
 import core.web.argumentresolver.LoginUserHandlerMethodArgumentResolver;
+import next.interceptor.PerformanceInterceptor;
 
 @Configuration
 @EnableWebMvc
@@ -34,6 +36,17 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter {
         bean.setPrefix("/WEB-INF/jsp/");
         bean.setSuffix(".jsp");
         return bean;
+    }
+    
+    @Bean
+    public PerformanceInterceptor performanceInterceptor() {
+    	return new PerformanceInterceptor();
+    }
+    
+    @Override
+    public void addInterceptors(InterceptorRegistry registry) {
+    	registry.addInterceptor(performanceInterceptor())
+    		.addPathPatterns("/**");
     }
     
     @Override
