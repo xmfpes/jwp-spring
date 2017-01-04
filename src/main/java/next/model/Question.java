@@ -2,11 +2,15 @@ package next.model;
 
 import java.util.Date;
 
+import javax.validation.constraints.Size;
+
 public class Question {
 	private long questionId;
 
+	@Size(min = 4, max = 12)
 	private String writer;
 
+	@Size(min = 4, max = 200)
 	private String title;
 
 	private String contents;

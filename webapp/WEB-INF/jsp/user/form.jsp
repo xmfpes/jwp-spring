@@ -16,18 +16,22 @@
                 <div class="form-group">
                     <label for="userId">사용자 아이디</label>
                     <form:input path="userId" cssClass="form-control"/>
+                    <form:errors path="userId"/>
                 </div>
                 <div class="form-group">
                     <label for="password">비밀번호</label>
                     <form:password path="password" cssClass="form-control"/>
+                    <form:errors path="password"/>
                 </div>
                 <div class="form-group">
                     <label for="name">이름</label>
                     <form:input path="name" cssClass="form-control"/>
+                    <form:errors path="name"/>
                 </div>
                 <div class="form-group">
                     <label for="email">이메일</label>
                     <form:input path="email" cssClass="form-control"/>
+                    <form:errors path="email"/>
                 </div>
                 <button type="submit" class="btn btn-success clearfix pull-right">회원가입</button>
                 <div class="clearfix" />

@@ -1,21 +1,22 @@
 package next.controller.user;
 
 import javax.servlet.http.HttpSession;
-
-import next.controller.UserSessionUtils;
-import next.dao.UserDao;
-import next.model.User;
+import javax.validation.Valid;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import core.web.argumentresolver.LoginUser;
+import next.controller.UserSessionUtils;
+import next.dao.UserDao;
+import next.model.User;
 
 @Controller
 @RequestMapping("/users")
@@ -48,7 +49,11 @@ public class UserController {
     }
     
     @RequestMapping(value = "", method = RequestMethod.POST)
-	public String create(User user) throws Exception {
+	public String create(@Valid User user, BindingResult result) throws Exception {
+    	if (result.hasErrors()) {
+    		return "/user/form";
+    	}
+    	
         log.debug("User : {}", user);
         userDao.insert(user);
 		return "redirect:/";
