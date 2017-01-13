@@ -18,7 +18,7 @@ import org.springframework.stereotype.Controller;
 
 @Configuration
 @ComponentScan(
-	basePackages = { "next.service", "next.dao", "next.aop" },
+	basePackages = { "next" },
 	excludeFilters = @ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION)
 )
 @PropertySource("classpath:application.properties")

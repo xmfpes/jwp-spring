@@ -1,7 +1,6 @@
 package next.support;
 
 import javax.annotation.PostConstruct;
-import javax.servlet.ServletContextEvent;
 import javax.sql.DataSource;
 
 import org.slf4j.Logger;
@@ -20,7 +19,7 @@ public class DBInitializer {
 	private DataSource dataSource;
 
 	@PostConstruct
-	public void contextInitialized(ServletContextEvent sce) {
+	public void contextInitialized() {
 		ResourceDatabasePopulator populator = new ResourceDatabasePopulator();
 		populator.addScript(new ClassPathResource("jwp.sql"));
 		DatabasePopulatorUtils.execute(populator, dataSource);
