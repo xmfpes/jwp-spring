@@ -12,7 +12,7 @@ import org.springframework.stereotype.Controller;
 
 @Configuration
 @ComponentScan(
-	basePackages = { "next.service", "next.dao" },
+	basePackages = { "next" },
 	excludeFilters = @ComponentScan.Filter(value = Controller.class, type = FilterType.ANNOTATION)
 )
 public class AppConfig {
