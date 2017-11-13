@@ -16,7 +16,6 @@ import next.controller.qna.DeleteQuestionController;
 import next.controller.qna.ShowQuestionController;
 import next.controller.qna.UpdateFormQuestionController;
 import next.controller.qna.UpdateQuestionController;
-import next.controller.user.CreateUserController;
 import next.controller.user.ListUserController;
 import next.controller.user.LoginController;
 import next.controller.user.LogoutController;
@@ -29,13 +28,10 @@ public class RequestMapping {
 	private Map<String, Controller> mappings = new HashMap<>();
 	
 	void initMapping() {
-	    mappings.put("/users/form", new ForwardController("/user/form.jsp"));
-	    mappings.put("/users/loginForm", new ForwardController("/user/login.jsp"));
 	    mappings.put("/users", new ListUserController());
 		mappings.put("/users/login", new LoginController());
 		mappings.put("/users/profile", new ProfileController());
 	    mappings.put("/users/logout", new LogoutController());
-	    mappings.put("/users/create", new CreateUserController());
 	    mappings.put("/users/updateForm", new UpdateFormUserController());
 	    mappings.put("/users/update", new UpdateUserController());
 		mappings.put("/qna/show", new ShowQuestionController());
